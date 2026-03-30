@@ -1,8 +1,13 @@
 const input = document.getElementById("input");
-const button = document.getElementById("addBtn");
+const addButton = document.getElementById("addBtn");
 const list = document.getElementById("list");
+const removeAllButton = document.getElementById("removeBtn");
 
-button.addEventListener("click", () => {
+removeAllButton.addEventListener("click", () => {
+  list.innerHTML = "";
+});
+
+addButton.addEventListener("click", () => {
   const text = input.value.trim();
 
   if (text === "") return;
@@ -17,15 +22,16 @@ button.addEventListener("click", () => {
   );
   li.textContent = text;
   list.appendChild(li);
-
   const removeBtn = document.createElement("button");
   removeBtn.textContent = "Ta bort";
   removeBtn.classList.add("btn", "btn-danger", "btn-sm", "ms-2");
   li.appendChild(removeBtn);
-
+  
   removeBtn.addEventListener("click", () => {
     li.remove();
   });
-
   input.value = "";
 });
+
+
+
